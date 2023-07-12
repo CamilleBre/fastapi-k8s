@@ -1,3 +1,6 @@
+![image](https://github.com/CamilleBre/fastapi-k8s/assets/57957940/c5535934-4dae-46a8-8101-ca718af59f56)
+
+
 Déploiement d'une application sécurisée
 
 Contexte et objectif :
