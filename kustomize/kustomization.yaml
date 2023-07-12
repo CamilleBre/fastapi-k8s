@@ -1,0 +1,24 @@
+resources:
+- fastapi
+- mysql
+- phpmyadmin
+patchesStrategicMerge:
+- patch.yaml
+namePrefix: kustomize-
+
+vars:
+- name: FASTAPI_SERVICE
+  objref:
+    kind: Service
+    name: fastapi
+    apiVersion: v1
+- name: MYSQL_SERVICE
+  objref:
+    kind: Service
+    name: mysql
+    apiVersion: v1
+- name: PHPMYADMIN_SERVICE
+  objref:
+    kind: Service
+    name: phpmyadmin
+    apiVersion: v1

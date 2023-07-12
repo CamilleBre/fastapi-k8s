@@ -1,0 +1,39 @@
+# Create the SQL Server deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: standard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8
+        ports:
+        - containerPort: 3306
+          name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "password"
+        - name: MYSQL_DATABASE
+          value: "storedb"
+          #- name: MSSQL_SA_PASSWORD
+          #valueFrom:
+          #  secretKeyRef:
+          #    name: mssql-secret
+          #    key: SA_PASSWORD 
+          #        volumeMounts:
+          #         - name: mysql-volume
+          #           mountPath: /var/lib/mysql
+          #      volumes:
+          #      - name: mysql-volume
+          #        persistentVolumeClaim:
+          #         claimName: mysql-data
