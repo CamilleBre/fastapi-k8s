@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: fastapi-ingress
+  namespace : standard
 spec:
   rules:
     - host: k8.lapinson.cloudns.ph
@@ -11,7 +12,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: fastapi-service
+                name: fastapi
                 port:
                   number: 80
 
