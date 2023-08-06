@@ -6,26 +6,32 @@ mysql:
  service:
   type: ClusterIP
   port: 3306
- password: "password"
- database: "storedb"
-    #    pvc:
-    #    accessMode: ReadWriteMany
-    #    storage: 10Gi
-    #    storageClassName: local-path
+
+pvc:
+  name : mysql-data
+  accessMode: ReadWriteOnce
+  storage: 10Gi
+  storageClassName: local-path
 
 phpmyadmin:
  image: phpmyadmin
  replicaCount: 1
  service:
   type: ClusterIP
-  port: 80
+  port: 8080
+  
 
 fastapi:
  image: camillebre/fastapi
  replicaCount: 3 
  service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80 
  ingress:
   enabled: true
   hostname: k8.lapinson.cloudns.ph
+
+hpa:
+  minReplicas: 3
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70

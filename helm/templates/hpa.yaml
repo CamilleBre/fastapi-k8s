@@ -10,6 +10,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: fastapi
-  minReplicas: 3
-  maxReplicas: 6
-  targetCPUUtilizationPercentage: 70
+  minReplicas: {{ .Values.hpa.minReplicas }}
+  maxReplicas: {{ .Values.hpa.maxReplicas }}
+  targetCPUUtilizationPercentage: {{ .Values.hpa.targetCPUUtilizationPercentage }}

@@ -1,0 +1,1 @@
+sudo k3s etcd-snapshot save --etcd-snapshot-dir=/home/ubuntu/backups
