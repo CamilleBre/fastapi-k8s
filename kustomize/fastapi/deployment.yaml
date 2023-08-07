@@ -1,30 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapi
-  labels:
-    app: fastapi
-  namespace : kustomize 
+  name: fastapi-deployment
+  namespace : kustomize
+  labels: 
+    app: fastapi 
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: fastapi
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: fastapi
     spec:
       containers:
-      - image: fastapi
-        name: fastapi
+      - name: fastapi
+        image: camillebre/fastapi
         ports:
         - containerPort: 80
-          name: fastapi
-        volumeMounts:
-        - name: fastapi-persistent-storage
-          mountPath: /var/www/html
-      volumes:
-      - name: fastapi-persistent-storage
-        emptyDir: {}

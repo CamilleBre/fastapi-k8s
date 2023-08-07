@@ -2,9 +2,12 @@ resources:
 - fastapi
 - mysql
 - phpmyadmin
-patchesStrategicMerge:
-- patch.yaml
-namePrefix: kustomize-
+- hpa.yaml
+- pvc.yaml
+- ingress.yaml 
+#patchesStrategicMerge:
+#- patch.yaml
+#namePrefix: kustomize-
 
 vars:
 - name: FASTAPI_SERVICE

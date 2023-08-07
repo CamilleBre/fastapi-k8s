@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: fastapi-ingress
+  namespace : kustomize
 spec:
   rules:
     - host: k8.lapinson.cloudns.ph
